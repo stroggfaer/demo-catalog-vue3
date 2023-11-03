@@ -2,7 +2,7 @@
   <div v-loading="loading" class="wrap">
     <el-breadcrumb v-if="!loading" style="margin-bottom: 30px">
       <el-breadcrumb-item :to="{ path: '/catalog' }">Каталог</el-breadcrumb-item>
-      <el-breadcrumb-item>{{product.title}}</el-breadcrumb-item>
+      <el-breadcrumb-item>{{product?.title}}</el-breadcrumb-item>
     </el-breadcrumb>
     <div v-if="product" class="card">
       <div class="image">
@@ -42,7 +42,7 @@ export default {
     const {isProductsCart} = storeToRefs(cardStore);
 
     const loading = ref(true);
-    const product = ref<ProductsModel>();
+    const product = ref<ProductsModel>() as any;
 
     const routeParamId = computed(() => route?.params?.id);
 
