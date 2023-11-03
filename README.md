@@ -1,4 +1,7 @@
 # DEMO vue3 catalog SPA
+```sh
+Demo: https://guileless-axolotl-0607be.netlify.app/
+```
 
 ## Project Setup
 
