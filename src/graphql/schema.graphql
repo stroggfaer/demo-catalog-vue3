@@ -1,0 +1,103 @@
+directive @type(name: String!) on FIELD
+directive @rest(path: String!, type: String) on FIELD
+
+type Products {
+  id: Int
+  quantity: Int!
+  productId: Int!
+  title: String!
+  price: Int!
+  description: String!
+  image: String!
+  rating: [RatingModel]
+}
+type RatingModel {
+  rate: Int!
+  count: Int!
+}
+input ParamsModel {
+  limit: Int!
+  page: Int!
+}
+
+#Users
+type UserModel {
+  id: Int
+  username: String!
+  email: String!
+  phone: String!
+  name: [UserNameModel]!
+  address: [AddressModel]!
+}
+type UserNameModel {
+  firstname: String!
+  lastname: String!
+}
+type AddressModel  {
+  city: String!
+  street: String!
+  number: Int!
+  zipcode: String!
+  geolocation: [GeolocationModel]!
+}
+
+type GeolocationModel  {
+  lat: String
+  long: String
+}
+
+#Cards
+type CardsModel  {
+  id: String
+  userId: String!
+  date: String!
+  products: [Products]
+}
+# USER dummyjson
+type HairModel  {
+  color: String
+  type: String
+}
+type AddressTestModel  {
+  address: String!
+  city: String!
+  postalCode: String!
+  state: String!
+}
+type UserTestModel {
+  id: Int
+  firstName: String!
+  lastName: String!
+  age: String!
+  gender: String!
+  email: String!
+  phone: String!
+  username: String!
+  password: String!
+  birthDate: String!
+  image: String!
+  bloodGroup: String!
+  height: Int!
+  weight: Int!
+  eyeColor: String!
+  domain: String!
+  ip: String!
+  macAddress: String!
+  university: String!
+  ein: String!
+  ssn: String!
+  userAgent: String!
+}
+
+
+
+type Query {
+  products(params: ParamsModel!): Products!
+  users: UserModel!
+#  usersTest(params: ParamsModel!): UserTestModel!
+  user(id: String!): UserModel!
+}
+
+schema {
+  query: Query
+}
